@@ -1,0 +1,2 @@
+RewriteEngine ON
+RewriteRule ^(states\.php|sql_connection.php) - [F,L,NC]

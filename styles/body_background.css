@@ -1,0 +1,12 @@
+/* background source: https://www.svgbackgrounds.com/ */
+body {
+    background-image: url("/TechTronic/images/protruding-squares.svg");
+    background-attachment: fixed;
+    padding-top: 100px;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        padding-top: 230px !important;
+    }
+}

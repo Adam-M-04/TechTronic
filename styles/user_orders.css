@@ -1,0 +1,9 @@
+#orders_list {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.user-order {
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.225) !important;
+}

@@ -1,0 +1,20 @@
+.product-card {
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px !important;
+}
+
+.product-card:hover {
+    box-shadow: 0 0.3rem 3rem rgba(120, 120, 120, 1) !important;
+}
+
+.product-image {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    object-fit: contain;
+}
+
+.product-card-price {
+    font-size: 20px;
+}

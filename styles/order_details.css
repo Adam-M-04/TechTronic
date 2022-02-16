@@ -1,0 +1,163 @@
+body {
+    padding-bottom: 100px;
+}
+
+h3 {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.products-list {
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 20px;
+}
+
+.product-image {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+
+.product-image-container, .product-name, .product-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.product-price {
+    min-width: 150px;
+}
+
+.product-quantity {
+    margin-right: 10px;
+}
+
+.flex-break {
+    height: 0;
+    flex-basis: 100%;
+}
+
+.delivery-options-list {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.delivery-option, .payment-option {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.delivery-icon, .payment-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.order_summary {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    bottom: 2px;
+    width: calc(100% - 10px);
+    height: 80px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 5px 0 5px;
+    z-index: 10;
+}
+
+.order_summary_text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    max-width: 1000px;
+    font-size: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.user_address {
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px 0 6px 0;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+}
+
+.user_address p {
+    font-size: 18px;
+    margin: 10px 0 10px 0;
+}
+
+#edit_address {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.collapse_address_arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.shop-title {
+    text-align: left;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.remove-shop {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .product-image-container {
+        display: none;
+    }
+
+    .items_text {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .items_span {
+        display: none;
+    }
+
+    .delivery-option {
+        font-size: 18px;
+    }
+
+    .delivery-icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .payment-description {
+        display: none;
+    }
+}

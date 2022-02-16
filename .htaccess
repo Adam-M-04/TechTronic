@@ -1,0 +1,13 @@
+ErrorDocument 404 /TechTronic/page_not_found.html
+ErrorDocument 403 /TechTronic/forbidden.html
+Options -Indexes
+
+RewriteEngine On
+RewriteRule ^products/([^/]+)/?$ product_view.php?id=$1 [L]                         # product view
+RewriteRule ^categories/([^/]+)&([^/]+)/?$ products.php?category_id=$2&name=$1 [L]  # product by category
+RewriteRule ^categories/?$ categories.php [L]                                       # categories
+RewriteRule ^settings/?$ settings.php?c=details [L]                                 # settings
+RewriteRule ^settings/([^/]+)(/([^/]+))?/?$ settings.php?c=$1&$3 [L]                # settings with parameters
+RewriteRule ^cart/?$ cart.php [L]                                                   # cart
+RewriteRule ^your-orders/?$ user_orders.php [L]                                     # user orders
+RewriteRule ^register/?$ register.php [L]                                           # register

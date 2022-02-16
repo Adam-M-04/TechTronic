@@ -1,0 +1,7 @@
+Order Allow,Deny
+<FilesMatch "^get_user_address\.php$">
+Allow from all
+</FilesMatch>
+<FilesMatch "^get_shop_address\.php$">
+Allow from all
+</FilesMatch>

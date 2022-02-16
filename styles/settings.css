@@ -1,0 +1,28 @@
+#content {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+#address_form_container, #user_details_form, #login_details_form {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px 40px 40px 40px;
+    border-radius: 15px;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.alert {
+    max-width: 464px;
+    margin: 10px;
+    width: 100%;
+    font-size: 20px;
+}
