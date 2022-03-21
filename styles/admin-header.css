@@ -1,0 +1,26 @@
+body {
+    padding-top: 80px !important;
+}
+
+#log-out-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#log-out-icon {
+    width: 25px;
+    height: 25px;
+    margin-top: -4px;
+    margin-left: 5px;
+}
+
+#logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+#logo_img {
+    width: 250px;
+}

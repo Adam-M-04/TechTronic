@@ -47,6 +47,10 @@
             $image_path = $product->image_path == NULL ? "card-image.png" : "product_images/".$product->image_path;
             $color = $product->color_name ?? "unknown color";
             $price = number_format($product->price,2);
+            $cart_button = $product->amount > 0 ?
+                "<button class='btn btn-outline-success' onclick='add_to_cart($product->cv_id)'>Add to cart</button>" :
+                "<button class='btn btn-outline-danger' disabled>Sold out</button>";
+
             echo <<< product
                 <div class="card product-card">
                     <a href="/TechTronic/products/$product->cv_id/" style="text-decoration: none; height: 100%;">
@@ -78,7 +82,7 @@
                     </div>
                     <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
                         <small class="text-primary product-card-price">$$price</small>
-                        <button class="btn btn-outline-success" onclick="add_to_cart($product->cv_id)">Add to cart</button>
+                        $cart_button
                     </div>
                 </div>
 product;

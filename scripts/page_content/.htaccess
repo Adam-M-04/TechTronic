@@ -5,3 +5,6 @@ Allow from all
 <FilesMatch "^get_shop_address\.php$">
 Allow from all
 </FilesMatch>
+<FilesMatch "^get_product_images\.php$">
+Allow from all
+</FilesMatch>

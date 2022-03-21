@@ -1,0 +1,36 @@
+#products {
+    margin-bottom: 20px;
+}
+
+.product-cell {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button-width {
+    width: 120px;
+    margin-left: 5px;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.product-title {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+}
+
+.specification_table {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10px;
+}
+
+.specification_table td {
+    width: 50%;
+}

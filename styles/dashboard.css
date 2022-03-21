@@ -1,0 +1,20 @@
+.cells-container {
+    padding: 20px;
+}
+
+.link-cell {
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+    #logo_img {
+        width: 150px;
+    }
+}

@@ -10,7 +10,7 @@
         "SELECT 
                     cv.*,
                     p.product_id, p.producer_id, CONCAT(p.product_name_base, ' ', p.product_name_version) as name, p.warranty,
-                    prod.producent_name, cat.category_id, cat.category_name, col.color_name, 
+                    prod.producer_name, cat.category_id, cat.category_name, col.color_name, 
                     sn1.specification_name as s_name_1, sn2.specification_name as s_name_2, sn3.specification_name as s_name_3,
                     sv1.specification_value as s_value_1, sv2.specification_value as s_value_2, sv3.specification_value as s_value_3
                     FROM color_versions cv

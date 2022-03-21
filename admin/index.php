@@ -11,7 +11,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="/TechTronic/images/logo_small.png"/>
-    <title>Login - admin dashboard</title>
+    <title>Login as admin</title>
     <link rel="stylesheet" href="/TechTronic/styles/main.css">
     <link rel="stylesheet" href="/TechTronic/styles/body_background.css">
     <script src="/TechTronic/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

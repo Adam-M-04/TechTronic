@@ -23,6 +23,12 @@
 
     function get_carousel_with_images(array $images_array): string
     {
+        if(count($images_array) == 0)
+        {
+            $tmp = new stdClass();
+            $tmp->{"image_path"} = '../card-image.png';
+            $images_array[] = $tmp;
+        }
         $to_return = "<div id=\"carouselExampleIndicators\" class=\"carousel slide carousel-dark\" data-bs-ride=\"carousel\">";
         $len = count($images_array);
         $indicators = "<div class=\"carousel-indicators\" style='margin-bottom: -20px;'>";
@@ -57,6 +63,6 @@
             $to_return .= "<tr><td>$row->specification_name</td><td>$row->specification_value</td></tr>";
         }
         $to_return .= "<tr><td>Warranty</td><td>".(isset($product->warranty) ? $product->warranty." months" : "No warranty")."</td></tr>";
-        $to_return .= "<tr><td>Producent</td><td>$product->producent_name</td></tr>";
+        $to_return .= "<tr><td>Producer</td><td>$product->producer_name</td></tr>";
         return $to_return."</table>";
     }
