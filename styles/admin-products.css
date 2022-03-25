@@ -2,16 +2,9 @@
     margin-bottom: 20px;
 }
 
-.product-cell {
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-}
-
 .button-width {
     width: 120px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .no-underline {
@@ -20,17 +13,13 @@
 
 .product-title {
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    max-width: 900px;
+    font-size: 20px;
 }
 
-.specification_table {
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 10px;
+.product-category {
+    font-size: 18px;
 }
 
-.specification_table td {
-    width: 50%;
+.product-price {
+    font-size: 20px;
 }

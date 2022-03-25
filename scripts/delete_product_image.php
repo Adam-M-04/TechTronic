@@ -8,8 +8,12 @@
     {
         include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
         $conn = new Connection();
-        if($conn->query("DELETE FROM product_images WHERE image_path = '{$_POST["filename"]}'"))
+        if($conn->query("DELETE FROM product_images WHERE image_id = {$_POST["image_id"]}"))
         {
+            if(count($conn->get_data("SELECT image_id FROM product_images WHERE image_path = '".$_POST['filename']."'")))
+            {
+                exit();
+            }
             if(unlink("../images/product_images/".$_POST["filename"]))
             {
                 exit();

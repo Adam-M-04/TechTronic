@@ -21,13 +21,12 @@
                             data-bs-toggle='tooltip' data-bs-placement='bottom' title='Double click to select as main image'>
                 <img src='/TechTronic/images/product_images/{$image->image_path}' class='product-image'>
                 <button class='btn btn-danger delete-button' onclick='delete_image({$_GET['index']},{$_GET['cv_id']}, 
-                `{$image->image_path}`)'>Delete</button>
+                `{$image->image_path}`, {$image->image_id})'>Delete</button>
             </div>";
     }
     if(count($images) < 6) $images_HTML .=
-        "<label for='image_input_{$_GET['cv_id']}' class='add_button_label d-flex align-items-center justify-content-center'>
-            <img src='/TechTronic/images/plus-square.svg' class='add-image-icon'>
-         </label>
+        "<img src='/TechTronic/images/plus-square.svg' class='add-image-icon' data-bs-toggle='modal' data-bs-target='#images_from_gallery'
+            onclick='set_parameters({$_GET['cv_id']}, {$_GET['index']})'>
          <input type='file' style='display: none;' id='image_input_{$_GET['cv_id']}' 
             onchange='add_product_image({$_GET['index']},{$_GET['cv_id']})'>";
 

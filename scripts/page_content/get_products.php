@@ -49,7 +49,7 @@
             $price = number_format($product->price,2);
             $cart_button = $product->amount > 0 ?
                 "<button class='btn btn-outline-success' onclick='add_to_cart($product->cv_id)'>Add to cart</button>" :
-                "<button class='btn btn-outline-danger' disabled>Sold out</button>";
+                "<button class='btn btn-outline-secondary' disabled>Sold out</button>";
 
             echo <<< product
                 <div class="card product-card">

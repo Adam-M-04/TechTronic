@@ -50,9 +50,15 @@
         elseif ($product->amount <= 10) $amount_background = "warning";
         else $amount_background = "success";
 
+        $start_value = min($product->amount, 1);
+        $disabled_amount = $product->amount > 0 ? "" : "disabled";
+        $button_text = $product->amount > 0 ? "Add To Cart" : "Sold Out";
+        $button_color = $product->amount > 0 ? "success" : "secondary";
+        $product_name = html_entity_decode($product->name);
+
         echo <<< product
             <script id="title_change">
-                document.title = "$product->name - TechTronic"
+                document.title = `$product_name - TechTronic`
                 document.getElementById('title_change').remove();
             </script>
             <div class="card mb-3 product-view-card">
@@ -65,26 +71,26 @@
                             <h3 class="card-title text-dark">$product->name</h3>
                             <span class="text-dark">Color: </span><span class="text-muted">$product->color_name</span>
                             $category                       
-                            <h1 class="text-dark" style="margin-top: 40px;">$$price</h1>
-                            <div class="row" style="margin-top: 30px; flex-wrap: nowrap;">
-                                <div class="col" style="display: flex;justify-content: right;">
-                                    <input type="number" class="form-control number-of-items-input" value="1" min="1" 
+                            <h1 class="text-dark pd-price">$$price</h1>
+                            <div class="row pd_add_to_cart_row">
+                                <div class="col d-flex justify-content-end">
+                                    <input type="number" class="form-control number-of-items-input" value="$start_value" min="1" 
                                         max="$product->amount" id="amount_to_add" 
-                                        onchange="this.value = Math.max(Math.min(this.value, this.max),1)">
+                                        onchange="this.value = Math.max(Math.min(this.value, this.max),1)" $disabled_amount>
                                 </div>
-                                <div class="col" style="display: flex;justify-content: left;">
-                                    <button class="btn btn-outline-success btn-lg" style="width: 140px;" 
-                                        onclick="add_to_cart($product->cv_id, document.getElementById('amount_to_add').value)">Add to cart</button>
+                                <div class="col d-flex justify-content-start">
+                                    <button class="btn btn-outline-$button_color btn-lg pd_add_to_cart_button" $disabled_amount
+                                        onclick="add_to_cart($product->cv_id, document.getElementById('amount_to_add').value)">$button_text</button>
                                 </div>
                             </div>
-                            <div style="margin-top: 15px; font-size: 18px;" class="text-primary">
+                            <div class="text-primary pd_available_in_stock">
                                 Available in stock: <span class="badge bg-{$amount_background}">$product->amount</span>
                             </div>
-                            <div style="display: flex; align-items: center; justify-content: center;margin-top: 10px;">
+                            <div style="margin-top: 10px;" class="d-flex align-items-center justify-content-center">
                                 <p style="font-size: 18px;" class="text-dark" title="Free shipping when ordering an item
                                         or items valued at $100 or more" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                                    <img src="/TechTronic/images/truck.svg" style="width: 25px; height: 25px;">
-                                    <span class="text-dark" style="margin: 0 8px 0 8px; font-weight: 500;">Free delivery<span>
+                                    <img src="/TechTronic/images/truck.svg" class="pd_truck_image">
+                                    <span class="text-dark pd_free_delivery_text">Free delivery<span>
                                 </p>
                             </div>    
                             <a href="/TechTronic/products.php?category_id=$product->category_id&name=All variants&product_id=$product->product_id">

@@ -18,8 +18,10 @@
 
     <h1><?php echo $_GET['name'] ?? 'Products';?></h1>
 
-    <div id="content" class="align-items-stretch d-flex justify-content-center flex-wrap">
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_products.php"); ?>
+    <div id="content" class="d-flex justify-content-center">
+        <div id="products_wrapper" class="align-items-stretch d-flex justify-content-center flex-wrap">
+            <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_products.php"); ?>
+        </div>
     </div>
 
     <script src="/TechTronic/scripts/JS/add_to_cart.js"></script>

@@ -54,7 +54,7 @@
     function get_specification(array $specs, object $product): string
     {
         $to_return = "<table class=\"table table-dark table-hover table-bordered product-specification-table\">
-                        <thead class='table-light'><th colspan='2'>SPECIFICATION</th></thead>
+                        <thead class='table-dark'><th colspan='2'>SPECIFICATION</th></thead>
                         <tr><td>$product->s_name_1</td><td>$product->s_value_1</td></tr>
                         <tr><td>$product->s_name_2</td><td>$product->s_value_2</td></tr>
                         <tr><td>$product->s_name_3</td><td>$product->s_value_3</td></tr>";

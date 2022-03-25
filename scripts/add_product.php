@@ -45,8 +45,9 @@
                 (producer_id, category_id, product_name_base, product_name_version, warranty, feature_1_val, feature_2_val, feature_3_val)
                 VALUES ($producer, $category_id, '$base_name', '$version_name', $warranty, $feature_1, $feature_2, $feature_3)"))
         {
+            $insert_id = $conn->obj->insert_id;
             $conn->obj->commit();
-            header("location: /TechTronic/admin/products/added/");
+            header("location: /TechTronic/admin/products/added/{$insert_id}/");
         }
         else
         {

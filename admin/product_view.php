@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/TechTronic/styles/admin-product_view.css">
     <script src="/TechTronic/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/TechTronic/scripts/JS/product_images.js"></script>
+    <script src="/TechTronic/scripts/JS/product_view_specification.js"></script>
 </head>
 <body>
     <?php
@@ -79,6 +80,11 @@
         $producers_datalist = "<datalist id='producers_datalist'>";
         foreach ($producers as $producer) {$producers_datalist .= "<option value='{$producer->producer_name}'</option>";}
         $producers_datalist .= "</datalist>";
+
+        $feature_names = $conn->get_data("SELECT specification_name FROM specification_names");
+        $features_names_datalist = "<datalist id='features_names_datalist'>";
+        foreach ($feature_names as $fv) {$features_names_datalist .= "<option value='{$fv->specification_name}'</option>";}
+        $features_names_datalist .= "</datalist>";
 
         $feature_values = $conn->get_data("SELECT specification_value FROM specification_values");
         $features_datalist = "<datalist id='features_datalist'>";
@@ -147,7 +153,7 @@
                            list="features_datalist" name="feature_3_val" required>
                 </div>
             </div>
-            <?php echo $features_datalist; ?>
+            <?php echo $features_datalist.$features_names_datalist; ?>
             <div class="row">
                 <div class="col-md-3 d-flex align-items-center justify-content-end">
                     <label class="form-label">Warranty (months)</label>
@@ -163,6 +169,17 @@
         </div>
     </form>
 
+    <?php
+        if($_GET['id'] > 0)
+        echo '<br><br>
+                <h2 class="display-2 text-center text-light">Specification</h2>
+                <div class="container specification-container" id="specification">
+                    <script>
+                        const product_id = '.$_GET['id'].';
+                        load_specification()
+                    </script>
+                </div>';
+    ?>;
 
 
     <?php
@@ -277,10 +294,15 @@
                     document.getElementById("cv_id_input").value = cv_id
                     document.getElementById("product_id_input").value = product_id
                 }
+                
+                get_images_gallery()
             </script>
             ';
         }
+
     ?>
+
+    <div id="gallery_modal_container"></div>
 
     <?php $conn->close(); ?>
     </body>

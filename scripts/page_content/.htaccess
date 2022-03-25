@@ -8,3 +8,9 @@ Allow from all
 <FilesMatch "^get_product_images\.php$">
 Allow from all
 </FilesMatch>
+<FilesMatch "^images_from_gallery\.php$">
+Allow from all
+</FilesMatch>
+<FilesMatch "^get_product_specification_admin\.php$">
+Allow from all
+</FilesMatch>

@@ -35,3 +35,31 @@
 .product-specification-table td {
     width: 50%;
 }
+
+.pd-price {
+    margin-top: 40px;
+}
+
+.pd_add_to_cart_row {
+    margin-top: 30px;
+    flex-wrap: nowrap;
+}
+
+.pd_add_to_cart_button {
+    width: 140px;
+}
+
+.pd_available_in_stock {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.pd_free_delivery_text {
+    margin: 0 8px 0 8px;
+    font-weight: 500;
+}
+
+.pd_truck_image {
+    width: 25px;
+    height: 25px;
+}

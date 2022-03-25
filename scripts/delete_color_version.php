@@ -8,7 +8,7 @@
     include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
     $conn = new Connection();
 
-    $images = $conn->get_data("SELECT image_path FROM product_images WHERE cv_id = ".$id);
+    $images = $conn->get_data("SELECT image_path FROM product_images pi WHERE (SELECT COUNT(*) FROM product_images WHERE image_path = pi.image_path) <= 1 and cv_id = ".$id);
     foreach($images as $image)
     {
         if(file_exists('../images/product_images/'.$image->image_path)) unlink('../images/product_images/'.$image->image_path);

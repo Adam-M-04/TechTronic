@@ -28,7 +28,7 @@
             }
             if(isset($_GET['added']))
             {
-                $msg = 'Product added successfully';
+                $msg = "Product added successfully <a href='/TechTronic/admin/product_view/{$_GET['added']}/' class='no-underline'>EDIT</a>";
                 $color = 'success';
             }
             if(isset($_GET['failure']))

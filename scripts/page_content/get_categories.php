@@ -18,8 +18,8 @@ category;
 
     if($categories = $conn->get_data("SELECT * FROM categories ORDER BY category_name"))
     {
-        foreach ($categories as $category) echo_category($category->category_id, $category->image_path, $category->category_name);
         echo_category(-1, "all.png", "All products");
+        foreach ($categories as $category) echo_category($category->category_id, $category->image_path, $category->category_name);
     }
     else
     {

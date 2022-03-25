@@ -45,5 +45,5 @@
     $new_path = "../images/product_images/".$new_name;
     if(move_uploaded_file($image['tmp_name'], $new_path))
     {
-        $conn->query("INSERT INTO product_images (image_path, cv_id) VALUES ('$new_name', $id)");
+        if(!$conn->query("INSERT INTO product_images (image_path, cv_id) VALUES ('$new_name', $id)")) echo "Could not upload";
     }
