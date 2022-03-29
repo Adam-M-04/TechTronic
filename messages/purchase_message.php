@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) {header("location: /shop/register.php");exit();}
+    if(!isset($_SESSION["user_id"])) {header("location: /TechTronic/register.php");exit();}
 ?>
 <!doctype html>
 <html lang="en">

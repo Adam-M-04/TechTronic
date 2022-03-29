@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION["user_id"])) header("location: /TechTronic/");
+    if(isset($_SESSION["user_id"])) include_once ($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/log_out.php");
     if(isset($_SESSION["admin_id"])) header("location: /TechTronic/admin/dashboard/");
 ?>
 <!doctype html>

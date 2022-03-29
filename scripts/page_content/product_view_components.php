@@ -2,7 +2,8 @@
 
     function get_color_variants(int $id, object $conn): string
     {
-        $versions = $conn->get_data("SELECT cv_id,color_name,price FROM `color_versions` 
+        $versions = $conn->get_data("SELECT cv_id,color_name, IF(discount_price is not NULL, discount_price, price) as price 
+                            FROM `color_versions` 
                             INNER JOIN products USING(product_id) LEFT JOIN colors USING(color_id)
                             WHERE product_id = {$id}");
 
@@ -14,7 +15,7 @@
         for($i = 0; $i < $len; ++$i)
         {
             $is_current = $versions[$i]->cv_id == $_GET["id"] ? " style='font-weight: 500;'" : "";
-            $to_return .= "<li><a class='dropdown-item d-flex justify-content-between'$is_current href='/TechTronic/products/{$versions[$i]->cv_id}/'>
+            $to_return .= "<li><a class='dropdown-item d-flex justify-content-between'$is_current href='/TechTronic/product/{$versions[$i]->cv_id}/'>
                                 <span style='padding-right: 20px;'>{$versions[$i]->color_name}</span> <span>\${$versions[$i]->price}</span></a></li>";
             if($i != $len - 1) $to_return .= "<li><hr class=\"dropdown-divider\"></li>";
         }

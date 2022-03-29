@@ -23,13 +23,20 @@
 
         foreach ($products as $product)
         {
-            $items_count += (float)$product->selected_amount;
-            $total_value += (float)$product->selected_amount * (float)$product->price;
+            if($product->amount > 0)
+            {
+                $items_count += (float)$product->selected_amount;
+                $total_value += (float)$product->selected_amount * ($product->discount_price ? (float)$product->discount_price : (float)$product->price);
+            }
 
             $price = number_format($product->price,2);
+            $price = $product->discount_price ? "<span class='text-secondary text-decoration-line-through'>$$price</span>" : "$".$price;
+            $discount_price = $product->discount_price ? number_format($product->discount_price,2) : "";
+            if($discount_price) $discount_price = "<span class='text-primary'>$$discount_price</span>";
+
             $img_src = isset($product->image_path) ? "product_images/$product->image_path" : "card-image.png";
             if($product->amount == 0) $options = "<h3 style='margin-right: 20px;' class='text-danger'>Sold out</h3>";
-            else $options = "<h3 class='text-primary'>$$price</h3>
+            else $options = "<h3 class='text-primary'>$price $discount_price</h3>
                              <input type=\"number\" class=\"form-control form-control-lg amount_of_product\" 
                                   value=\"$product->selected_amount\" min=\"1\" max=\"$product->amount\" 
                                   onblur='this.value = Math.max(Math.min(this.value, this.max),1);update_amount_in_cart($product->cv_id, this.value)'>
@@ -45,7 +52,7 @@
                         <div class="col-md-10">
                             <div class="card-body row g-0 product-in-cart-body">
                                 <div class="col-md-9 d-flex justify-content-start align-items-center">
-                                    <a href="/TechTronic/products/$product->cv_id/" style="text-decoration: none;">
+                                    <a href="/TechTronic/product/$product->cv_id/" style="text-decoration: none;">
                                         <h3 class="card-title text-dark">$product->name</h3>
                                     </a>
                                 </div>
@@ -66,10 +73,10 @@ product;
         echo <<< summary
             <div class="container cart-summary bg-light text-dark">
                 <div class="row">
-                    <div class="col-6" style="text-align: left; padding-left: 40px;"><strong>Total:</strong> $$total_value</div>
-                    <div class="col-6" style="text-align: right; padding-right: 40px;">
+                    <div class="col-6 text-start" style="padding-left: 40px;"><strong>Total:</strong> $$total_value</div>
+                    <div class="col-6 text-end" style="padding-right: 40px;">
                         <span class="text-muted" style="font-size: 22px; margin-right: 20px;">($items_count items)</span> 
-                        <a href="/TechTronic/order_details.php">
+                        <a href="/TechTronic/order-details/">
                             <button class="btn btn-lg btn-outline-success">Continue</button>
                         </a>
                     </div>

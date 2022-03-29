@@ -2,7 +2,7 @@
     function echo_category($id, $path, $name): void
     {
         echo <<< category
-            <a href="/TechTronic/categories/$name&$id/" style="text-decoration: none;">
+            <a href="/TechTronic/products/$name&$id/" style="text-decoration: none;">
                 <div class="card category_card shadow-lg">
                       <img src="/TechTronic/images/category_images/$path" class="card-img-top category_image" alt="category image">
                       <div class="card-body">

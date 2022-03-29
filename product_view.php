@@ -21,7 +21,8 @@
 
     <script src="/TechTronic/scripts/JS/add_to_cart.js"></script>
     <script>
-        let shipping_title = new bootstrap.Tooltip(document.querySelector("[data-bs-toggle=\"tooltip\"]"))
+        let tmp = null
+        for(let tooltip of document.querySelectorAll('[data-bs-toggle="tooltip"]')) tmp = new bootstrap.Tooltip(tooltip)
     </script>
 </body>
 </html>

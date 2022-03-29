@@ -4,7 +4,7 @@
     function go_back(string $err_code, object $conn, bool $rollback = true): void
     {
         if($rollback) $conn->obj->rollback();
-        header("location: /TechTronic/order_details.php?mes=".$err_code);
+        header("location: /TechTronic/order-details/$err_code/");
         $conn->close();
         exit();
     }
@@ -62,7 +62,7 @@
     }
 
     # Getting current products in user's cart from database
-    $products_in_cart = $conn->get_data("SELECT c.*, cv.amount as available_amount, cv.price 
+    $products_in_cart = $conn->get_data("SELECT c.*, cv.amount as available_amount, cv.price, cv.discount_price
         FROM cart c JOIN color_versions cv USING(cv_id) 
         WHERE user_id = {$_SESSION['user_id']} AND cv.amount > 0");
     if(count($products_in_cart) == 0) go_back(0, $conn);
@@ -84,7 +84,7 @@
             {
                 $conn->obj->query("UPDATE color_versions SET amount = amount - $selected_amount WHERE cv_id = $product->cv_id");
                 unset($sent_products[$product->cv_id]);
-                $order_price += $product->price * $product->amount;
+                $order_price += ($product->discount_price ?? $product->price) * $product->amount;
             }
             else
             {
@@ -120,13 +120,14 @@
 
         foreach ($products_in_cart as $product)
         {
+            $price = $product->discount_price ?? $product->price;
             $bool = $conn->obj->query("INSERT INTO ordered_products (order_id, cv_id, ordered_amount, value) 
-                VALUES ({$order_id}, {$product->cv_id}, {$product->amount}, {$product->price})") and $bool;
+                VALUES ({$order_id}, {$product->cv_id}, {$product->amount}, {$price})") and $bool;
         }
 
         if($bool) $conn->obj->commit();
         else go_back("0", $conn);
-        header("location: /TechTronic/messages/purchase_message.php?id=".$order_id);
+        header("location: /TechTronic/messages/purchase-message/$order_id/");
     }
 
     $conn->close();

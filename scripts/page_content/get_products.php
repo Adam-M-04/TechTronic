@@ -26,16 +26,7 @@
         INNER JOIN specification_values sv2 on p.feature_2_val = sv2.sv_id
         INNER JOIN specification_values sv3 on p.feature_3_val = sv3.sv_id";
 
-    if ($category_id != -1) $query .= " WHERE category_id = ".$category_id;
-    if (isset($_GET["product_id"]))
-    {
-        $product_name = $conn->get_data("SELECT * FROM products WHERE product_id=".$_GET["product_id"]);
-        if($product_name != [])
-        {
-            $query .= ($category_id == -1 ? " WHERE":" AND")." product_name_base = \"".$product_name[0]->product_name_base."\"";
-        }
-        else $query = "";
-    }
+    include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/get_query_constraints.php");
 
     $products = $conn->get_data($query);
 
@@ -46,14 +37,24 @@
         {
             $image_path = $product->image_path == NULL ? "card-image.png" : "product_images/".$product->image_path;
             $color = $product->color_name ?? "unknown color";
+
+
             $price = number_format($product->price,2);
+            $discount_price = $product->discount_price ? number_format($product->discount_price,2) : false;
+            $price_HTML = "<small class='text-primary product-card-price'>$$price</small>";
+            if($discount_price != false)
+            {
+                $price_HTML = "<div class='text-danger product-card-price'>$$discount_price
+                    <span class='text-primary text-decoration-line-through old_price product-card-price-discount'>$$price</span></div>";
+            }
+
             $cart_button = $product->amount > 0 ?
                 "<button class='btn btn-outline-success' onclick='add_to_cart($product->cv_id)'>Add to cart</button>" :
                 "<button class='btn btn-outline-secondary' disabled>Sold out</button>";
 
             echo <<< product
                 <div class="card product-card">
-                    <a href="/TechTronic/products/$product->cv_id/" style="text-decoration: none; height: 100%;">
+                    <a href="/TechTronic/product/$product->cv_id/" style="text-decoration: none; height: 100%;">
                         <img src="/TechTronic/images/$image_path" class="card-img-top product-image" alt="product image">
                         <div class="card-body mt-auto">
                             <h5 class="card-title text-dark">$product->product_name_base $product->product_name_version</h5>
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                     <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
-                        <small class="text-primary product-card-price">$$price</small>
+                        $price_HTML
                         $cart_button
                     </div>
                 </div>

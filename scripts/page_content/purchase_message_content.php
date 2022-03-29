@@ -29,19 +29,23 @@
         $products = $conn->get_data(
             "SELECT op.*, CONCAT(p.product_name_base, ' ', p.product_name_version) as name, c.color_name
                 FROM ordered_products op
-                    JOIN color_versions cv USING (cv_id) 
-                    JOIN products p USING (product_id)
-                    JOIN colors c USING (color_id)
+                    LEFT JOIN color_versions cv USING (cv_id) 
+                    LEFT JOIN products p USING (product_id)
+                    LEFT JOIN colors c USING (color_id)
                 WHERE order_id = ".$order->order_id
         );
         $products_list = "<ul class='list-group'>";
         foreach ($products as $product)
+        {
+            $text = $product->cv_id ? "$product->name <span class='text-muted'>($product->color_name)</span>" :
+                "<span class='text-danger'>Deleted product</span>";
             $products_list .= "<li class='list-group-item d-flex justify-content-between' style='font-size: 20px;'>
                     <span>
-                        <b>{$product->ordered_amount}x</b> $product->name <span class='text-muted'>($product->color_name)</span></span> 
-                        <span class='text-primary'>$$product->value
-                    </span>
+                        <b>{$product->ordered_amount}x</b> $text
+                    </span> 
+                    <span class='text-primary'>$$product->value</span>
                 </li>";
+        }
         $products_list .= "</ul>";
 
         echo <<< details

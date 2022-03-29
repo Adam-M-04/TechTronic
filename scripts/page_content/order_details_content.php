@@ -32,9 +32,9 @@
             LEFT JOIN colors cl USING (color_id)
             WHERE user_id = {$_SESSION["user_id"]} AND cv.amount > 0");
 
-    $ordered_items = $conn->get_data("SELECT SUM(c.amount * cv.price) as price, SUM(c.amount) as count
+    $ordered_items = $conn->get_data("SELECT SUM(c.amount * IF(cv.discount_price, cv.discount_price, cv.price)) as price, SUM(c.amount) as count
         FROM cart c JOIN color_versions cv using (cv_id) 
-        WHERE user_id = {$_SESSION['user_id']}")[0];
+        WHERE cv.amount > 0 AND user_id = {$_SESSION['user_id']}")[0];
 
     $delivery_options = $conn->get_data("SELECT delivery_name, delivery_description, icon,
             IF({$ordered_items->price} >= min_order_value AND min_order_value != -1, 'Free', delivery_cost) as delivery_cost FROM order_delivery");
