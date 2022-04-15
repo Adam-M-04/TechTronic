@@ -27,7 +27,7 @@
     if(count($images) < 6) $images_HTML .=
         "<img src='/TechTronic/images/plus-square.svg' class='add-image-icon' data-bs-toggle='modal' data-bs-target='#images_from_gallery'
             onclick='set_parameters({$_GET['cv_id']}, {$_GET['index']})'>
-         <input type='file' style='display: none;' id='image_input_{$_GET['cv_id']}' 
+         <input type='file' style='display: none;' id='image_input_{$_GET['cv_id']}' accept=\"image/png, image/jpeg\"
             onchange='add_product_image({$_GET['index']},{$_GET['cv_id']})'>";
 
     echo $images_HTML;

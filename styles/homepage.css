@@ -1,0 +1,23 @@
+.color-span {
+    font-size: 20px;
+}
+
+.carousel-container {
+    height: 400px;
+}
+
+.carousel-image {
+    height: 450px;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.responsive-margin {
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 767px) {
+    .responsive-margin {
+        margin-top: 400px;
+    }
+}

@@ -64,6 +64,8 @@
             $to_return .= "<tr><td>$row->specification_name</td><td>$row->specification_value</td></tr>";
         }
         $to_return .= "<tr><td>Warranty</td><td>".(isset($product->warranty) ? $product->warranty." months" : "No warranty")."</td></tr>";
-        $to_return .= "<tr><td>Producer</td><td>$product->producer_name</td></tr>";
+        $to_return .= "<tr><td>Producer</td>
+                <td><a href='/TechTronic/products.php?producer_id={$product->producer_id}' target='_blank' class='text-decoration-none'>
+                $product->producer_name</a></td></tr>";
         return $to_return."</table>";
     }

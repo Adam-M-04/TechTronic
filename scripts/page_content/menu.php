@@ -59,6 +59,7 @@ login_window;
 
     }
 
+    $search_query = htmlentities($_GET["product_name"] ?? "");
     echo <<< menu
         <script src="/TechTronic/scripts/JS/log_out_ajax.js"></script>
         <header class="p-3 bg-dark text-white" style="position: fixed;top:0px;width: 100%;z-index: 10;">
@@ -75,8 +76,9 @@ login_window;
                         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                     </ul>
         
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="get" action="/TechTronic/products.php">
+                        <input type="search" class="form-control form-control form-control-dark" 
+                            placeholder="Search..." aria-label="Search" name="product_name" value="{$search_query}">
                     </form>
                     $right_content
                 </div>

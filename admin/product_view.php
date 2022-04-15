@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION["admin_id"])) header("location: /TechTronic/admin");
+    if(!isset($_SESSION["admin_id"])) {header("location: /TechTronic/admin"); exit();}
 
     include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
     $conn = new Connection();
@@ -67,7 +67,7 @@
             }
         }
 
-        $categories = $conn->get_data("SELECT * FROM categories");
+        $categories = $conn->get_data("SELECT * FROM categories ORDER BY category_name");
         $categories_HTML = "<select class='form-select form-select-lg' id='category_input' name='category_id'>";
         foreach ($categories as $category)
         {
@@ -77,17 +77,19 @@
         }
         $categories_HTML .= "</select>";
 
-        $producers = $conn->get_data("SELECT producer_name FROM producers");
+        $producers = $conn->get_data("SELECT producer_name FROM producers ORDER BY producer_name");
         $producers_datalist = "<datalist id='producers_datalist'>";
         foreach ($producers as $producer) {$producers_datalist .= "<option value='{$producer->producer_name}'</option>";}
         $producers_datalist .= "</datalist>";
 
-        $feature_names = $conn->get_data("SELECT specification_name FROM specification_names");
+        $feature_names = $conn->get_data("SELECT specification_name FROM specification_names sn 
+            ORDER BY (SELECT COUNT(*) FROM product_specification ps WHERE ps.sn_id = sn.sn_id) DESC, specification_name");
         $features_names_datalist = "<datalist id='features_names_datalist'>";
         foreach ($feature_names as $fv) {$features_names_datalist .= "<option value='{$fv->specification_name}'</option>";}
         $features_names_datalist .= "</datalist>";
 
-        $feature_values = $conn->get_data("SELECT specification_value FROM specification_values");
+        $feature_values = $conn->get_data("SELECT specification_value FROM specification_values sv 
+            ORDER BY (SELECT COUNT(*) FROM product_specification ps WHERE ps.sv_id = sv.sv_id) DESC, specification_value");
         $features_datalist = "<datalist id='features_datalist'>";
         foreach ($feature_values as $fv) {$features_datalist .= "<option value='{$fv->specification_value}'</option>";}
         $features_datalist .= "</datalist>";

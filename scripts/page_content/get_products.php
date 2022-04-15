@@ -1,13 +1,10 @@
 <?php
 
-    include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
-    $conn = new Connection();
-
     $category_id = $_GET["category_id"] ?? -1;
 
     $query =
         "SELECT 
-            cv.*, p.*, c.color_name, pi.image_path, 
+            cv.*, p.*, c.color_name, pi.image_path,
             sn1.specification_name as s_name_1,
             sn2.specification_name as s_name_2,
             sn3.specification_name as s_name_3,
@@ -29,8 +26,19 @@
     include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/get_query_constraints.php");
 
     $products = $conn->get_data($query);
+    $result_count = count($products);
+    $last_page = intval(($result_count - 1) / 20) + 1;
+    $products = array_splice($products, ($page - 1) * 20, 20);
+    $displayed_count = count($products);
 
-    if($products == []) echo "No products";
+    if($products == [])
+    {
+        echo "<script id='tmp'>
+                document.getElementById('title').innerText = 'No products found'
+                document.getElementById('filters').remove()
+                document.getElementById('tmp').remove()
+            </script>";
+    }
     else
     {
         foreach ($products as $product)

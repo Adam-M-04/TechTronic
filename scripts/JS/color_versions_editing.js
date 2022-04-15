@@ -33,8 +33,8 @@ function add_color_version()
 function validate_cv(form)
 {
     if(form.get('color').length == 0) return "Color input cannot be void"
-    if(form.get('amount') < 0) return "Amount cannot be negative"
-    if(parseFloat(form.get('price')) <= 0) return "Price must be greater than $0"
+    if(form.get('amount') < 0 || form.get('amount') == '') return "Amount cannot be negative"
+    if(parseFloat(form.get('price')) <= 0 || form.get('price') == '') return "Price must be greater than $0"
     if(parseFloat(form.get('discount_price')) <= 0) return "Discount price must be greater than $0"
     if(parseFloat(form.get('price')) <= parseFloat(form.get('discount_price')) && form.get('discount_price') != '') return "Discount price must be lower than normal price"
     return false

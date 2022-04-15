@@ -28,7 +28,7 @@
             <a href="/TechTronic/admin/categories/" class="col-5 no-underline">
                 <div class="bg-light text-dark link-cell d-flex align-items-center justify-content-center">Categories</div>
             </a>
-            <a href="#" class="col-5 no-underline">
+            <a href="/TechTronic/admin/orders/" class="col-5 no-underline">
                 <div class="bg-light text-dark link-cell d-flex align-items-center justify-content-center">Orders</div>
             </a>
         </div>

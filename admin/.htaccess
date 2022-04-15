@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteRule ^dashboard/?$ dashboard.php [L]
+RewriteRule ^orders/?$ orders.php [L]
 RewriteRule ^products/?$ products.php [L]
 RewriteRule ^products/deleted/?$ products.php?deleted=true [L]
 RewriteRule ^products/failure/?$ products.php?failure=true [L]

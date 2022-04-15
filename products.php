@@ -16,7 +16,9 @@
 <body class="min-vh-100 text-center text-white bg-dark">
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/menu.php"); ?>
 
-    <h1><?php echo $_GET['name'] ?? 'Products';?></h1>
+    <h1 id="title"><?php echo $_GET['name'] ?? 'Products';?></h1>
+
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_product_filters.php"); ?>
 
     <div id="content" class="d-flex justify-content-center">
         <div id="products_wrapper" class="align-items-stretch d-flex justify-content-center flex-wrap">
@@ -25,6 +27,11 @@
     </div>
 
     <script src="/TechTronic/scripts/JS/add_to_cart.js"></script>
+
+
+    <br>
+    <?php if($displayed_count > 0) include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/products_pagination.php"); ?>
+    <br>
 
 </body>
 </html>

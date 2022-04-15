@@ -3,7 +3,7 @@
     {
         $price = $product->min_price ? "FROM $".$product->min_price : "UNAVAILABLE";
         echo <<< product
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center" product_name="{$product->product_name_base} {$product->product_name_version}">
                 <div class="ms-2 me-auto">
                   <div class="fw-bold product-title">{$product->product_name_base} {$product->product_name_version}</div>
                   <span class="product-category">{$product->category_name}</span>

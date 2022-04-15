@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/TechTronic/styles/admin-products.css">
         <script src="/TechTronic/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
+    <body onload="filter_products(document.getElementById('search_input').value)">
         <?php
             include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/admin-menu.php");
             $msg = false; $color = '';
@@ -47,8 +47,14 @@
             }
         ?>
         <h1 class="display-1 text-center text-light">Products</h1>
+        <div class="container d-flex justify-content-center" style="margin-bottom: 50px;">
+            <input type="text" class="form-control form-control-lg" style="max-width: 500px;" placeholder="Search..."
+                oninput="filter_products(value)" id="search_input">
+        </div>
         <div id="products">
             <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_products_admin.php"); ?>
         </div>
+
+        <script src="/TechTronic/scripts/JS/filter_products_admin.js"></script>
     </body>
 </html>

@@ -27,3 +27,22 @@
     font-size: 16px;
 }
 
+.filters-buttons-container {
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    width: 140px; margin: 0 10px 0 10px;
+}
+
+.checkbox-label {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.enlarge {
+    transform: scale(1.5, 1.5);
+}
+
