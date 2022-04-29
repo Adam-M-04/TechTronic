@@ -2,7 +2,7 @@
     include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
     $conn = new Connection();
 
-    $base_link = "/TechTronic/products.php";
+    $base_link = "/TechTronic/products/";
 
     $search_query = htmlentities($_GET['product_name'] ?? '');
     $exact_search = boolval($_GET["exact_search"] ?? false);
@@ -96,8 +96,9 @@
         <div class=\"offcanvas offcanvas-start bg-dark\" tabindex=\"-1\" id=\"filters_offcanvas\" aria-labelledby=\"offcanvasExampleLabel\">
             <div class=\"offcanvas-header\">
                 <h2>Filters</h2>
+                <button type='button' class='btn-close btn-close-white text-reset' data-bs-dismiss='offcanvas' aria-label='Close'></button>
             </div>
-            <form method='get' action='$base_link'>
+            <form method='get' action='$base_link' id='filters_form'>
             $offcanvas_parameters
             <div class=\"offcanvas-body\">
                 <h4>Price <span class='text-primary'>$</span></h4>
@@ -150,6 +151,9 @@
                 </div>
                 
                 <br><div class='row'><div class='col'><button class='btn btn-lg btn-success w-100'>Apply</button></div></div>
+                <br><div class='row'><div class='col'><button class='btn btn-lg btn-secondary w-100'
+                    onclick='reset_form(`filters_form`)'>Reset</button></div></div>
             </div>
             </form>
-        </div>";
+        </div>
+        <script src='/TechTronic/scripts/JS/reset_form.js'></script>";

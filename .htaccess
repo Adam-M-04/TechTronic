@@ -4,7 +4,8 @@ Options -Indexes
 
 RewriteEngine On
 RewriteRule ^product/([^/]+)/?$ product_view.php?id=$1 [L]                          # product view
-RewriteRule ^products/([^/]+)&([^/]+)/?$ products.php?category_id=$2&name=$1 [L]    # product by category
+RewriteRule ^products/?$ products.php [L]                                           # products
+RewriteRule ^products/([^/]+)&([^/]+)/?$ products.php?category_id=$2&name=$1 [L]    # products by category
 RewriteRule ^categories/?$ categories.php [L]                                       # categories
 RewriteRule ^settings/?$ settings.php?c=details [L]                                 # settings
 RewriteRule ^settings/([^/]+)(/([^/]+))?/?$ settings.php?c=$1&$3 [L]                # settings with parameters

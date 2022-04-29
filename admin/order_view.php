@@ -14,19 +14,22 @@
         <link rel="stylesheet" href="/TechTronic/styles/main.css">
         <link rel="stylesheet" href="/TechTronic/styles/body_background.css">
         <link rel="stylesheet" href="/TechTronic/styles/admin-header.css">
+        <link rel="stylesheet" href="/TechTronic/styles/order-view-admin.css">
         <script src="/TechTronic/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/admin-menu.php"); ?>
 
-        <h1 class="display-1 text-center text-light">Orders</h1>
-
-        <?php
-            include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
-            $conn = new Connection();
-            include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_orders_filters.php");
-            include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_orders_admin.php");
-        ?>
+    <?php
+        include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/admin-menu.php");
+        include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/sql_connection.php");
+        $conn = new Connection();
+        if(!isset($_GET['id']))
+        {
+            echo "<h2 class='text-center text-light'>Order ID not specified</h2>";
+            exit();
+        }
+        include_once($_SERVER['DOCUMENT_ROOT']."/TechTronic/scripts/page_content/get_order_details.php");
+    ?>
 
     </body>
 </html>
