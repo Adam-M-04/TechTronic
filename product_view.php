@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TechTronic</title>
-    <link rel="icon" type="image/png" href="/TechTronic/images/logo_small.png"/>
+    <link rel="icon" type="image/png" href="/TechTronic/images/favicon.ico"/>
     <link rel="stylesheet" href="/TechTronic/styles/main.css">
     <link rel="stylesheet" href="/TechTronic/styles/product_view.css">
     <link rel="stylesheet" href="/TechTronic/styles/body_background.css">
